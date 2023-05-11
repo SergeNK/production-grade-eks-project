@@ -20,7 +20,7 @@ data "terraform_remote_state" "provisioner_state" {
 
 data "aws_secretsmanager_secret" "central_provisioner" {
   provider = aws.credential
-  name     = "central-provisioner-credentials"
+  name     = "central-provisioner1-credentials"
 }
 
 data "aws_secretsmanager_secret_version" "central_provisioner" {
@@ -47,7 +47,7 @@ provider "aws" {
   default_tags {
     tags = {
       Stage              = local.cluster_name
-      Owner              = "declarative-eks-tutorial"
+      Owner              = "declarative-eks-prod-grade"
       Workspace          = "terraform/${local.cluster_name}/vpc"
       ManagedByTerraform = "true"
     }

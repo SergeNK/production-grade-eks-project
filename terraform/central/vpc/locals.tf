@@ -1,6 +1,6 @@
 locals {
-  region          = "ap-northeast-2"                    # TODO: Change to your region
-  tfstates_bucket = "declarative-eks-tutorial-tfstates" # TODO: Change to your bucket name
+  region          = "us-east-1"                    # TODO: Change to your region
+  tfstates_bucket = "declarative-eks-tutorial-tf008" # TODO: Change to your bucket name
   cidr            = "10.99.0.0/16"
 
   cluster_name     = "central"

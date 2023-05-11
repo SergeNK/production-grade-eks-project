@@ -4,9 +4,9 @@ karpenter:
   replicas: 1
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: arn:aws:iam::765355018960:role/central-karpenter-controller
+      eks.amazonaws.com/role-arn: arn:aws:iam::278264368218:role/central-karpenter-controller
   clusterName: central
-  clusterEndpoint: "https://922A559CFE9073A6D73613AFFA79CDED.gr7.ap-northeast-2.eks.amazonaws.com"
+  clusterEndpoint: "https://36A1C04A4707285598F8535E3C3AD5B4.gr7.us-east-1.eks.amazonaws.com"
   aws:
     defaultInstanceProfile: KarpenterNodeInstanceProfile-central
 
@@ -24,7 +24,7 @@ provisionerList:
         values: [ "amd64" ]
       - key: "topology.kubernetes.io/zone"
         operator: In
-        values: [ "ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c" ]
+        values: [ "us-east-1a", "us-east-1b", "ap-east-1c" ]
       - key: "karpenter.sh/capacity-type"
         operator: In
         values: [ "on-demand", "spot" ]
@@ -41,7 +41,7 @@ provisionerList:
         values: [ "amd64" ]
       - key: "topology.kubernetes.io/zone"
         operator: In
-        values: [ "ap-northeast-2a", "ap-northeast-2b", "ap-northeast-2c" ]
+        values: [ "us-east-1a", "us-east-1b", "us-east-1c" ]
       - key: "karpenter.sh/capacity-type"
         operator: In
         values: [ "on-demand" ]

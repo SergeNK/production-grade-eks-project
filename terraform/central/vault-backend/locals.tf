@@ -1,6 +1,6 @@
 locals {
-  aws_account_id = "765355018960"   # TODO: replace with your AWS account ID
-  region         = "ap-northeast-2" # TODO: replace with your AWS region
+  aws_account_id = "278264368218"   # TODO: replace with your AWS account ID
+  region         = "us-east-1" # TODO: replace with your AWS region
 
   cluster_name     = "central"
   namespace        = "token-vault-auth-validator"

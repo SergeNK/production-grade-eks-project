@@ -2,12 +2,12 @@ ingress:
   ingressClassName: alb
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/certificate-arn: 'arn:aws:acm:ap-northeast-2:765355018960:certificate/757c8b86-0316-419a-947a-e182e6f1f1a7'
+    alb.ingress.kubernetes.io/certificate-arn: 'arn:aws:acm:us-east-1:278264368218:certificate/9a1632b2-3625-4446-b585-fc1c34878d87'
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
   hosts:
-    - host: vault.jacobkim.io
+    - host: snjcloud.com
       paths:
         - path: /
           pathType: Prefix
@@ -25,7 +25,7 @@ vault:
     logLevel: info
     serviceAccount:
       annotations:
-        eks.amazonaws.com/role-arn: "arn:aws:iam::765355018960:role/central-vault-cluster"
+        eks.amazonaws.com/role-arn: "arn:aws:iam::278264368218:role/central-vault-cluster"
     ingress:
       enabled: false
     ha:
@@ -45,12 +45,12 @@ vault:
           }
         }
         seal "awskms" {
-          region = "ap-northeast-2"
-          kms_key_id = "753188e2-8c73-458a-8ed9-c13c8298d75c"
+          region = "us-east-1"
+          kms_key_id = "eed4c878-1ac2-4202-a065-052f089a5d15"
         }
         storage "dynamodb" {
           ha_enabled = "true"
-          region     = "ap-northeast-2"
+          region     = "us-east-1"
           table      = "vault-backend-prod"
         }
         telemetry {

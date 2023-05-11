@@ -2,8 +2,8 @@ terraform {
   required_version = ">= 1.3.0"
 
   backend "s3" {
-    region         = "ap-northeast-2"                    # TODO: change to your region
-    bucket         = "declarative-eks-tutorial-tfstates" # TODO: change to your bucket name
+    region         = "us-east-1"                    # TODO: change to your region
+    bucket         = "declarative-eks-tutorial-tf008" # TODO: change to your bucket name
     dynamodb_table = "tutorial-terraform-backend-locks"
     key            = "central/eks.tfstate"
   }

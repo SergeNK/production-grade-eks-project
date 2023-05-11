@@ -1,3 +1,3 @@
 locals {
-  region = "ap-northeast-2" # TODO: Change to your region
+  region = "us-east-1" # TODO: Change to your region
 }

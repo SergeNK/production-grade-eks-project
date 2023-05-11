@@ -7,7 +7,7 @@ provider "aws" {
   default_tags {
     tags = {
       Stage              = "central"
-      Owner              = "declarative-eks-tutorial"
+      Owner              = "declarative-eks-prod-grade"
       Workspace          = "terraform/central/iam"
       ManagedByTerraform = "true"
     }
@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "central_role_trust_policy" {
   statement {
     effect = "Allow"
     principals {
-      identifiers = [aws_iam_user.central_user.arn, local.initial_provisioner_arn]
+      identifiers = [aws_iam_user.central_user.arn]
       type        = "AWS"
     }
     actions = ["sts:AssumeRole"]

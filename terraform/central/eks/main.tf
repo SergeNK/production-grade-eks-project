@@ -20,7 +20,7 @@ data "terraform_remote_state" "provisioner_state" {
 
 data "aws_secretsmanager_secret" "central_provisioner" {
   provider = aws.credential
-  name     = "central-provisioner-credentials"
+  name     = "central-provisioner1-credentials"
 }
 
 data "aws_secretsmanager_secret_version" "central_provisioner" {
@@ -47,7 +47,7 @@ provider "aws" {
   default_tags {
     tags = {
       Stage              = local.cluster_name
-      Owner              = "declarative-eks-tutorial"
+      Owner              = "declarative-eks-prod-grade"
       Workspace          = "terraform/${local.cluster_name}/eks"
       ManagedByTerraform = "true"
     }
@@ -142,8 +142,8 @@ module "eks" {
       instance_types = ["m5.large"]
 
       min_size     = 1
-      max_size     = 2
-      desired_size = 1
+      max_size     = 3
+      desired_size = 3
 
       # This will ensure the boostrap user data is used to join the node
       # By default, EKS managed node groups will not append bootstrap script;
@@ -166,16 +166,16 @@ module "eks" {
   aws_auth_accounts         = [local.aws_account_id]
   aws_auth_roles = [
     {
-      rolearn  = "arn:aws:iam::${local.aws_account_id}:role/${local.cluster_name}-provisioner"
-      username = "${local.cluster_name}-provisioner"
+      rolearn  = "arn:aws:iam::${local.aws_account_id}:role/${local.cluster_name}-provisioner1"
+      username = "${local.cluster_name}-provisioner1"
       groups   = ["system:bootstrappers", "system:masters", "system:nodes"]
     }
   ]
 
   aws_auth_users = [
     {
-      userarn  = "arn:aws:iam::${local.aws_account_id}:user/${local.cluster_name}-provisioner"
-      username = "${local.cluster_name}-provisioner"
+      userarn  = "arn:aws:iam::${local.aws_account_id}:user/${local.cluster_name}-provisioner1"
+      username = "${local.cluster_name}-provisioner1"
       groups   = ["system:masters"]
     },
     {

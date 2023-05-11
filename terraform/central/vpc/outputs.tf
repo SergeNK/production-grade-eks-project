@@ -33,3 +33,12 @@ output "intra_subnet_cidrs" {
 output "nats" {
   value = module.vpc.nat_public_ips
 }
+output "all_subnets" {
+  value = local.subnets
+}
+output "all_private_subnets" {
+  value = local.private_subnets
+}
+output "all_public_subnets" {
+   value =local.public_subnets
+}

@@ -11,7 +11,7 @@ provider "aws" {
 ################################################################################
 data "aws_secretsmanager_secret" "central_provisioner" {
   provider = aws.credential
-  name     = "central-provisioner-credentials"
+  name     = "central-provisioner1-credentials"
 }
 
 data "aws_secretsmanager_secret_version" "central_provisioner" {
@@ -31,14 +31,14 @@ provider "aws" {
   secret_key = local.central_provisioner["secretKey"]
 
   assume_role {
-    role_arn     = "arn:aws:iam::${local.aws_account_id}:role/${local.cluster_name}-provisioner"
+    role_arn     = "arn:aws:iam::${local.aws_account_id}:role/${local.cluster_name}-provisioner1"
     session_name = "central-vault"
   }
 
   default_tags {
     tags = {
       Stage              = local.cluster_name
-      Owner              = "declarative-eks-tutorial"
+      Owner              = "declarative-eks-prod-grade"
       Workspace          = "terraform/${local.cluster_name}/vault-backend"
       ManagedByTerraform = "true"
     }

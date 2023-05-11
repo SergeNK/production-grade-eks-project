@@ -4,7 +4,7 @@ provider "aws" {
   default_tags {
     tags = {
       Stage              = "central"
-      Owner              = "declarative-eks-tutorial"
+      Owner              = "declarative-eks-prod-grade"
       Workspace          = "terraform/central/dynamo"
       ManagedByTerraform = "true"
     }
